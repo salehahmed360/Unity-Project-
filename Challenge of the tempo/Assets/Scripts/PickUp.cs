@@ -55,7 +55,7 @@ public class PickUp : MonoBehaviour
     //update the heldObj position each frame
     void MoveObject()
     {
-        if(Vector3.Distance(heldObj.transform.position, holdParent.position) > 0.1f)
+        if(Vector3.Distance(heldObj.transform.position, holdParent.position) > 0.2f)
         {
             Vector3 moveDirection =(holdParent.position - heldObj.transform.position);
             heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);

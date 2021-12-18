@@ -7,6 +7,8 @@ TagManager:
   - player
   - hand
   - test
+  - doorBox
+  - doorTrigger
   layers:
   - Default
   - TransparentFX

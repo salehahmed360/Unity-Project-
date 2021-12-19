@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7666076529021414174}
   - component: {fileID: 7666076529021414173}
   - component: {fileID: 7666076529021414172}
+  - component: {fileID: 3213320339231321186}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7666076529021414170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.647419, y: -1.57, z: 1.8831911}
+  m_LocalPosition: {x: -1.647419, y: -1.57, z: 1.883191}
   m_LocalScale: {x: 1, y: 0.65474, z: 0.27}
   m_Children: []
   m_Father: {fileID: 7666076529557286453}
@@ -362,6 +363,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!95 &3213320339231321186
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666076529021414170}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a60d9ffbcf88883429d4a8c8481813ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7666076529451106473
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7666076529557286453}
+  - component: {fileID: 509367661565489046}
   m_Layer: 0
   m_Name: Vertical door
   m_TagString: Untagged
@@ -706,6 +727,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &509367661565489046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666076529557286452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c2894055dc6c74584acc1ad9014ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 7666076529557286452}
 --- !u!1 &7666076530749892942
 GameObject:
   m_ObjectHideFlags: 0

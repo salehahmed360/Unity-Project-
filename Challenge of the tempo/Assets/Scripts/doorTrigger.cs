@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class doorTrigger : MonoBehaviour
 {
-    private GameObject doorBox;
-    public bool doorStatues; //if the doorTrigger has a box on it or not
+    public GameObject doorBox;
+    public bool doorStatues;
 
     void Start()
     {
-        doorStatues = false; 
+        doorStatues = false;
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class doorTrigger : MonoBehaviour
         
     }
  
-    public void OnTriggerEnter(Collider other) //detects a box with name tag doorBox and sets the doorStatues to true to open the door
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("doorBox"))
         {
@@ -26,7 +26,7 @@ public class doorTrigger : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit(Collider other) //upon removing the box sets the doorStatues to false 
+    public void OnTriggerExit(Collider other)
     { 
             doorStatues = false; 
     }

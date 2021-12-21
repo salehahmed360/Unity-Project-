@@ -14,7 +14,7 @@ public class Sector1B : MonoBehaviour
     private Animator animDoorRight;
 
 
-    bool openPortal = false; 
+    public bool openPortal = false; 
 
     void Start()
     {

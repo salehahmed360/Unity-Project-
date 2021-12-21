@@ -25,6 +25,8 @@ TagManager:
   - PurpleTrigger
   - BlueTrigger
   - GreenTrigger
+  - bridge
+  - sector1b
   layers:
   - Default
   - TransparentFX

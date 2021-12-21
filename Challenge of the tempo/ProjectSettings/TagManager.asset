@@ -9,6 +9,22 @@ TagManager:
   - test
   - doorBox
   - doorTrigger
+  - redbox1
+  - redbox2
+  - redbox3
+  - bluebox1
+  - bluebox2
+  - bluebox3
+  - greenbox1
+  - greenbox2
+  - greenbox3
+  - purplebox1
+  - purplebox2
+  - purplebox3
+  - RedTrigger
+  - PurpleTrigger
+  - BlueTrigger
+  - GreenTrigger
   layers:
   - Default
   - TransparentFX

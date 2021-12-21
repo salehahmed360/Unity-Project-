@@ -30,8 +30,11 @@ public class GreenTrigger : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //checks if its a box layer
         {
+            if (collision.gameObject.tag == "greenbox1" || collision.gameObject.tag == "greenbox2" || collision.gameObject.tag == "greenbox3")
+            {
 
-            greenBoxes.Add(collision.gameObject); //only adds one
+                greenBoxes.Add(collision.gameObject); //only adds one
+            }
         }
         for (int i = 0; i < 3; i++)
         {

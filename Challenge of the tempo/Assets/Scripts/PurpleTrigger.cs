@@ -30,8 +30,10 @@ public class PurpleTrigger : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //checks if its a box layer
         {
-
-            purpleBoxes.Add(collision.gameObject); //only adds one
+            if (collision.gameObject.tag == "purplebox1" || collision.gameObject.tag == "purplebox2" || collision.gameObject.tag == "purplebox3")
+            {
+                purpleBoxes.Add(collision.gameObject); //only adds one
+            }
         } 
         for (int i = 0; i < 3; i++)
         {

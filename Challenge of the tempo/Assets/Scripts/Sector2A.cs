@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sector1B : MonoBehaviour
+public class Sector2A : MonoBehaviour
 {
     RedTrigger redtrigger, r;
     GreenTrigger greentrigger, g;
@@ -12,9 +12,6 @@ public class Sector1B : MonoBehaviour
     public GameObject parent; //using parent object to access its children to stop null pointer reference 
     private Animator animDoorLeft;
     private Animator animDoorRight;
-
-
-    bool openPortal = false; 
 
     void Start()
     {
@@ -50,9 +47,8 @@ public class Sector1B : MonoBehaviour
  */
     public void doorOpenening()
     {
-        if (r.redCheck == true && p.purpleCheck == true && g.greenCheck == true && b.blueCheck == true)
+        if (r.redCheck == true && b.blueCheck == true)
         {
-            openPortal = true;
             animDoorLeft.SetBool("LDisOpening", true);
             animDoorRight.SetBool("RDisOpening", true);
 
@@ -65,9 +61,8 @@ public class Sector1B : MonoBehaviour
      */
     public void doorClosing()
     {
-        if (r.redCheck == false || p.purpleCheck == false || g.greenCheck == false || b.blueCheck == false)
+        if (r.redCheck == false || b.blueCheck == false)
         {
-            openPortal = false;
             animDoorLeft.SetBool("LDisOpening", false);
             animDoorRight.SetBool("RDisOpening", false);
         }

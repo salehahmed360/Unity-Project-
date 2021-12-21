@@ -30,8 +30,12 @@ public class RedTrigger : MonoBehaviour
 
         if (collision.gameObject.layer == 9) //checks if its a box layer
         {
+            if (collision.gameObject.tag == "redbox1" || collision.gameObject.tag == "redbox2" || collision.gameObject.tag == "redbox3")
+            {
 
-            redBoxes.Add(collision.gameObject); //only adds one
+                redBoxes.Add(collision.gameObject); //only adds one
+
+            }
         }
         //sets all to false till otherwise changed to true it keeps updating so if its in redboxes list and has matching tag then they are changed to all true unitl one is out it becomes false
         for (int i = 0; i < 3; i++)

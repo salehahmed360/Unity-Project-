@@ -12,6 +12,7 @@ public class Sector2B : MonoBehaviour
     public GameObject parent; //using parent object to access its children to stop null pointer reference 
     private Animator animDoorLeft;
     private Animator animDoorRight;
+    public bool levelComplete = false;
 
     void Start()
     {
@@ -49,6 +50,7 @@ public class Sector2B : MonoBehaviour
     {
         if (r.redCheck == true && p.purpleCheck == true && g.greenCheck == true && b.blueCheck == true)
         {
+            levelComplete = true;
             animDoorLeft.SetBool("LDisOpening", true);
             animDoorRight.SetBool("RDisOpening", true);
 
@@ -63,6 +65,7 @@ public class Sector2B : MonoBehaviour
     {
         if (r.redCheck == false || p.purpleCheck == false || g.greenCheck == false || b.blueCheck == false)
         {
+            levelComplete = false;
             animDoorLeft.SetBool("LDisOpening", false);
             animDoorRight.SetBool("RDisOpening", false);
         }

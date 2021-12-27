@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class RedTrigger : MonoBehaviour
 {
     public List<GameObject> redBoxes;
@@ -90,6 +89,6 @@ public class RedTrigger : MonoBehaviour
 
             }
         }
-    }
+    } 
 }
 

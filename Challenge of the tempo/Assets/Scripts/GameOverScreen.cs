@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameOverScreen : MonoBehaviour
-{ 
+{
+    public bool active = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +23,14 @@ public class GameOverScreen : MonoBehaviour
 
     public void GameOver()
     {
+        active = true;
         this.gameObject.SetActive(true); 
     }
 
 
     public void Restart()
     {
+        active = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(0); //restart to level 1 or 2
         

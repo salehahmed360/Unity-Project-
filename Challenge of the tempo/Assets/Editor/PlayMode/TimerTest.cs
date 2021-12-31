@@ -14,9 +14,7 @@ namespace Tests
         //this test checks the timer reaches 0 after 5 seconds
         //setted the timer to 3 seconds and waited 5 seconds to 
         //see if its going to becomes negative
-       
-    
-
+        
 
         [UnityTest]
         public IEnumerator Timer_Reaches0()

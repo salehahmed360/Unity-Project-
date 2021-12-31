@@ -5,16 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
-    [SerializeField]
-    public float timevalue = 60;
+     
+    public float timevalue = 60f;
     public Text timerText;
 
-   public  GameOverScreen gameOver;
+    public  GameOverScreen gameOver;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+         timerText = GetComponent<Text>(); 
+          timerText.text = "00:00";
     }
 
     // Update is called once per frame
@@ -28,14 +29,15 @@ public class Timer : MonoBehaviour
         {
             timevalue = 0; 
             Time.timeScale = 0;
-            gameOver.GameOver();
-
-            //SceneManager.LoadScene(0); //restart to level 1 or 2
+             
+            gameOver.GameOver();  
         }
+          
         DisplayTime(timevalue);
+
     }
 
-    void DisplayTime(float timeToDisplay)
+    public void DisplayTime(float timeToDisplay)
     {
         if(timeToDisplay < 0)
         {

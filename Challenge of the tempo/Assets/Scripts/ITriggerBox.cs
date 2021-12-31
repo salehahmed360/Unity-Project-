@@ -21,7 +21,7 @@ public class TriggerBox : ITriggerBox
     public void AddBox(GameObject box, string tagbox1, string tagbox2, string tagbox3)
     {
 
-        if (box.gameObject.layer == 9) //checks if its a box layer
+        if (box.gameObject.layer == 9 && Boxes.Count<4) //checks if its a box layer and its less than three
         {
             if (box.gameObject.tag == tagbox1 || box.gameObject.tag == tagbox2 || box.gameObject.tag == tagbox3)
             { 

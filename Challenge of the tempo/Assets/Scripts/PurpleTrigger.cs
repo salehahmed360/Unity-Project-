@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PurpleTrigger : MonoBehaviour
 {
-    public List<GameObject> purpleBoxes;
+    public ITriggerBox purpleBoxes;
     public bool[] allIn;
     public Color origonalColor;
     public Renderer color;
@@ -12,7 +12,7 @@ public class PurpleTrigger : MonoBehaviour
     void Start()
     {
 
-        purpleBoxes = new List<GameObject>(); //store the collided boxes
+        purpleBoxes = new TriggerBox();
         allIn = new bool[3]; //each box is assigned true or false if all in greenBoxes
         color = gameObject.GetComponent<Renderer>(); //access box colour
         origonalColor = color.material.color; //gets the original colour on the box and stores it in this variable
@@ -28,28 +28,23 @@ public class PurpleTrigger : MonoBehaviour
     {
 
 
-        if (collision.gameObject.layer == 9) //checks if its a box layer
-        {
-            if (collision.gameObject.tag == "purplebox1" || collision.gameObject.tag == "purplebox2" || collision.gameObject.tag == "purplebox3")
-            {
-                purpleBoxes.Add(collision.gameObject); //only adds one
-            }
-        } 
+        purpleBoxes.AddBox(collision.gameObject,"purplebox1", "purplebox2", "purplebox3"); 
+
         for (int i = 0; i < 3; i++)
         {
             allIn[i] = false;
         }
-        for (int i = 0; i < purpleBoxes.Count; i++)
+        for (int i = 0; i < purpleBoxes.Boxes.Count; i++)
         {
-            if (purpleBoxes[i].tag == "purplebox1")
+            if (purpleBoxes.Boxes[i].tag == "purplebox1")
             {
                 allIn[0] = true;
             }
-            if (purpleBoxes[i].tag == "purplebox2")
+            if (purpleBoxes.Boxes[i].tag == "purplebox2")
             {
                 allIn[1] = true;
             }
-            if (purpleBoxes[i].tag == "purplebox3")
+            if (purpleBoxes.Boxes[i].tag == "purplebox3")
             {
                 allIn[2] = true;
             }
@@ -76,13 +71,13 @@ public class PurpleTrigger : MonoBehaviour
     private void OnTriggerExit(Collider collision)
     {
 
-        if (purpleBoxes.IndexOf(collision.gameObject) > -1) //becuase we removed a box so that means the list is not full 
+        if (purpleBoxes.Boxes.IndexOf(collision.gameObject) > -1) //becuase we removed a box so that means the list is not full 
         {
-            if (purpleBoxes.Contains(collision.gameObject))
+            if (purpleBoxes.Boxes.Contains(collision.gameObject))
             {
                 purpleCheck = false;
 
-                purpleBoxes.Remove(collision.gameObject); //remove that box you moved out 
+                purpleBoxes.Boxes.Remove(collision.gameObject); //remove that box you moved out 
                 color.material.SetColor("_Color", origonalColor); //must have _Color otherwise it wont work 
 
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GreenTrigger : MonoBehaviour
 {
-    public List<GameObject> greenBoxes;
+    public ITriggerBox greenBoxes;
     public bool[] allIn;
     public Color origonalColor;
     public Renderer color;
@@ -12,7 +12,7 @@ public class GreenTrigger : MonoBehaviour
     void Start()
     {
 
-        greenBoxes = new List<GameObject>(); //store the collided boxes
+        greenBoxes = new TriggerBox();
         allIn = new bool[3]; //each box is assigned true or false if all in greenBoxes
         color = gameObject.GetComponent<Renderer>(); //access box colour
         origonalColor = color.material.color; //gets the original colour on the box and stores it in this variable
@@ -28,29 +28,23 @@ public class GreenTrigger : MonoBehaviour
     {
 
 
-        if (collision.gameObject.layer == 9) //checks if its a box layer
-        {
-            if (collision.gameObject.tag == "greenbox1" || collision.gameObject.tag == "greenbox2" || collision.gameObject.tag == "greenbox3")
-            {
+        greenBoxes.AddBox(collision.gameObject, "greenbox1", "greenbox2", "greenbox3");
 
-                greenBoxes.Add(collision.gameObject); //only adds one
-            }
-        }
         for (int i = 0; i < 3; i++)
         {
             allIn[i] = false;
         }
-        for (int i = 0; i < greenBoxes.Count; i++)
+        for (int i = 0; i < greenBoxes.Boxes.Count; i++)
         {
-            if (greenBoxes[i].tag == "greenbox1")
+            if (greenBoxes.Boxes[i].tag == "greenbox1")
             {
                 allIn[0] = true;
             }
-            if (greenBoxes[i].tag == "greenbox2")
+            if (greenBoxes.Boxes[i].tag == "greenbox2")
             {
                 allIn[1] = true;
             }
-            if (greenBoxes[i].tag == "greenbox3")
+            if (greenBoxes.Boxes[i].tag == "greenbox3")
             {
                 allIn[2] = true;
             }
@@ -77,13 +71,13 @@ public class GreenTrigger : MonoBehaviour
     private void OnTriggerExit(Collider collision)
     {
 
-        if (greenBoxes.IndexOf(collision.gameObject) > -1) //becuase we removed a box so that means the list is not full 
+        if (greenBoxes.Boxes.IndexOf(collision.gameObject) > -1) //becuase we removed a box so that means the list is not full 
         {
-            if (greenBoxes.Contains(collision.gameObject))
+            if (greenBoxes.Boxes.Contains(collision.gameObject))
             {
                 greenCheck = false;
 
-                greenBoxes.Remove(collision.gameObject); //remove that box you moved out 
+                greenBoxes.Boxes.Remove(collision.gameObject); //remove that box you moved out 
                 color.material.SetColor("_Color", origonalColor); //must have _Color otherwise it wont work 
 
             }

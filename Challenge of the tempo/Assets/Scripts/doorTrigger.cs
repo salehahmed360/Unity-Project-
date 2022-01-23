@@ -20,7 +20,7 @@ public class doorTrigger : MonoBehaviour
  
     public void OnTriggerEnter(Collider other) //detects a box with name tag doorBox and sets the doorStatues to true to open the door
     {
-        if (other.CompareTag("doorBox"))
+        if (other.CompareTag("doorBox") || other.CompareTag("teleportBox"))
         {
             doorStatues = true;
         }

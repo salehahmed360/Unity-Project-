@@ -4,10 +4,14 @@ using System.Runtime.Serialization.Formatters;
 using System;
 using UnityEngine;
 
-public class Hovl_Laser2 : MonoBehaviour
+//most of the code here is from third party source from unity store
+//known as Hovel studio
+
+
+public class laser : MonoBehaviour
 {
     public float laserScale = 1;
-    public Color laserColor = new Vector4(1,1,1,1);
+    public Color laserColor = new Vector4(1, 1, 1, 1);
     public GameObject HitEffect;
     public GameObject FlashEffect;
     public float HitOffset = 0;
@@ -37,35 +41,30 @@ public class Hovl_Laser2 : MonoBehaviour
 
     void Update()
     {
-        if (laserPS != null && UpdateSaver == false) //check we have a particalsystem which is the main beem
+        if (laserPS != null && UpdateSaver == false)
         {
             //Set start laser point
             laserMat.SetVector("_StartPoint", transform.position);
             //Set end laser point
             RaycastHit hit;
-            //setting its start position, distance forward and maxlength
-            //if it hits anything the hit can read what ever object it has hit
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))
             {
+                // set particle number depending on distance
                 particleCount = Mathf.RoundToInt(hit.distance / (2 * laserScale));
                 if (particleCount < hit.distance / (2 * laserScale))
                 {
+                    // increase particle number if laser became longer (laser is particles that appear every 2 units)
                     particleCount += 1;
                 }
                 particlesPositions = new Vector3[particleCount];
                 AddParticles();
 
+                // set tiling distance in the material
                 laserMat.SetFloat("_Distance", hit.distance);
+                // make laser invisible after end point because laser clusters is 2 units
                 laserMat.SetVector("_EndPoint", hit.point);
-
-                //if player gets hit its game over
-                if (hit.transform.tag=="player")
-                {
-                    killPlayer();
-                }
-
-
-                //if the hit particle is not null
+              
+                //hit effects position when laser hits a wall or object
                 if (Hit != null)
                 {
                     HitEffect.transform.position = hit.point + hit.normal * HitOffset;
@@ -79,21 +78,31 @@ public class Hovl_Laser2 : MonoBehaviour
                         if (!AllFlashes.isPlaying) AllFlashes.Play();
                     }
                 }
+
+
+
+                if (hit.transform.tag=="player")
+                {
+                    killPlayer();
+                }
             }
-            else //if it didnt collide with anything
+            else
             {
-                //End laser position if doesn't collide with object
+                //End laser position if doesn't collide with object depending on MaxLength
                 var EndPos = transform.position + transform.forward * MaxLength;
                 var distance = Vector3.Distance(EndPos, transform.position);
                 particleCount = Mathf.RoundToInt(distance / (2 * laserScale));
                 if (particleCount < distance / (2 * laserScale))
                 {
+                    // increase particle number if laser is longer (laser is particles that appear every 1 unit)
                     particleCount += 1;
                 }
                 particlesPositions = new Vector3[particleCount];
                 AddParticles();
 
+                // set tiling distance in the material
                 laserMat.SetFloat("_Distance", distance);
+                // make laser invisible after end point because laser clusters is 2 units
                 laserMat.SetVector("_EndPoint", EndPos);
                 if (Hit != null)
                 {
@@ -103,13 +112,14 @@ public class Hovl_Laser2 : MonoBehaviour
                         if (AllPs.isPlaying) AllPs.Stop();
                     }
                 }
-            }          
+            }
         }
 
         if (startDissovle)
         {
+            // set dissolve speed depending on dissovleTimer value
             dissovleTimer += Time.deltaTime;
-            laserMat.SetFloat("_Dissolve", dissovleTimer*5);
+            laserMat.SetFloat("_Dissolve", dissovleTimer * 5);
         }
     }
 
@@ -120,47 +130,25 @@ public class Hovl_Laser2 : MonoBehaviour
         gameOver.GameOver();
     }
 
-    void AddParticles()
-    {
-        //Old particles settings
-        /*
-        var normalDistance = particleCount;
-        var sh = LaserPS.shape;
-        sh.radius = normalDistance;
-        sh.position = new Vector3(0,0, normalDistance);
-        LaserPS.emission.SetBursts(new[] { new ParticleSystem.Burst(0f, particleCount + 1) });
-        */
 
+    void AddParticles()
+    { 
+        //number of particles depends on Raycast distance
         particles = new ParticleSystem.Particle[particleCount];
 
         for (int i = 0; i < particleCount; i++)
         {
+            //calcalate distance for every next particle to set positions along the raycast
             particlesPositions[i] = new Vector3(0f, 0f, 0f) + new Vector3(0f, 0f, i * 2 * laserScale);
             particles[i].position = particlesPositions[i];
             particles[i].startSize3D = new Vector3(0.001f, 0.001f, 2 * laserScale);
             particles[i].startColor = laserColor;
         }
+        //set distance for every next particle to set positions along the raycast
         laserPS.SetParticles(particles, particles.Length);
     }
 
 
-    public void DisablePrepare()
-    {
-        transform.parent = null;
-        dissovleTimer = 0;
-        startDissovle = true;
-        UpdateSaver = true;
-        if (Flash != null && Hit != null)
-        {
-            foreach (var AllHits in Hit)
-            {
-                if (AllHits.isPlaying) AllHits.Stop();
-            }
-            foreach (var AllFlashes in Flash)
-            {
-                if (AllFlashes.isPlaying) AllFlashes.Stop();
-            }
-        }
-    }
+
 }
- 
+

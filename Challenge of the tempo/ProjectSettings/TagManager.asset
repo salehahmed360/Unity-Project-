@@ -28,6 +28,7 @@ TagManager:
   - bridge
   - sector1b
   - sector2b
+  - teleportBox
   layers:
   - Default
   - TransparentFX

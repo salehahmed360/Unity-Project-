@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8628707848775594421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727002119501941548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120fc8744e0092d408fd34819461a436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserScale: 1
+  laserColor: {r: 1, g: 1, b: 1, a: 1}
+  HitEffect: {fileID: 0}
+  FlashEffect: {fileID: 0}
+  HitOffset: 0
+  MaxLength: 0
+  gameOver: {fileID: 0}
 --- !u!1 &2728505954576806087
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,8 +328,25 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 976064479299598211, guid: d2d89a48f26d8e24fba34789fd97784e,
+        type: 3}
+      propertyPath: laserColor.g
+      value: 0.7137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 976064479299598211, guid: d2d89a48f26d8e24fba34789fd97784e,
+        type: 3}
+      propertyPath: laserColor.b
+      value: 0.41176474
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114491215411067744, guid: d2d89a48f26d8e24fba34789fd97784e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2d89a48f26d8e24fba34789fd97784e, type: 3}
+--- !u!1 &2727002119501941548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1645209392318072, guid: d2d89a48f26d8e24fba34789fd97784e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2728505954404371796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2728505955893598135
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public float pickupRange = 2; //how close we can pickup an object
+    public float pickupRange = 0.5f;//how close we can pickup an object
     public Transform holdParent;
     private GameObject heldObj;
     public float moveForce = 250; //the speed the heldObj will move to the holdParent object

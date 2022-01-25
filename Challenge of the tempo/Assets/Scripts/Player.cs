@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
              GroundCheck();
         }catch(System.Exception e)
         {
-            print("error");
+            print("error"+e);
         }
           
         

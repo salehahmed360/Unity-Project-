@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2727002119501941548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 120fc8744e0092d408fd34819461a436, type: 3}
   m_Name: 
@@ -337,6 +337,16 @@ PrefabInstance:
         type: 3}
       propertyPath: laserColor.b
       value: 0.41176474
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106899389702772056, guid: d2d89a48f26d8e24fba34789fd97784e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3593861323802461856, guid: d2d89a48f26d8e24fba34789fd97784e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114491215411067744, guid: d2d89a48f26d8e24fba34789fd97784e, type: 3}

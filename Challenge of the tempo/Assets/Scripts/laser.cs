@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters;
 using System;
 using UnityEngine;
-
+using UnityEditor;
 //most of the code here is from third party source from unity store
 //known as Hovel studio
 
@@ -29,8 +29,8 @@ public class laser : MonoBehaviour
     private Vector3[] particlesPositions;
     private float dissovleTimer = 0;
     private bool startDissovle = false;
-
-    void Start()
+    public RaycastHit hit;
+     void Start()
     {
         laserPS = GetComponent<ParticleSystem>();
         laserMat = GetComponent<ParticleSystemRenderer>().material;
@@ -39,16 +39,20 @@ public class laser : MonoBehaviour
         laserMat.SetFloat("_Scale", laserScale);
     }
 
-    void Update()
+   
+
+     void Update()
     {
         if (laserPS != null && UpdateSaver == false)
         {
             //Set start laser point
             laserMat.SetVector("_StartPoint", transform.position);
             //Set end laser point
-            RaycastHit hit;
+            
+
+          
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))
-            {
+            { 
                 // set particle number depending on distance
                 particleCount = Mathf.RoundToInt(hit.distance / (2 * laserScale));
                 if (particleCount < hit.distance / (2 * laserScale))
@@ -62,11 +66,15 @@ public class laser : MonoBehaviour
                 // set tiling distance in the material
                 laserMat.SetFloat("_Distance", hit.distance);
                 // make laser invisible after end point because laser clusters is 2 units
-                laserMat.SetVector("_EndPoint", hit.point);
-              
+                laserMat.SetVector("_EndPoint", hit.point); //end of the laser line stops once it hits any collision such as a wall or player
+
+               
+
                 //hit effects position when laser hits a wall or object
                 if (Hit != null)
                 {
+
+
                     HitEffect.transform.position = hit.point + hit.normal * HitOffset;
                     HitEffect.transform.LookAt(hit.point);
                     foreach (var AllHits in Hit)
@@ -78,7 +86,6 @@ public class laser : MonoBehaviour
                         if (!AllFlashes.isPlaying) AllFlashes.Play();
                     }
                 }
-
 
 
                 if (hit.transform.tag=="player")
@@ -148,6 +155,17 @@ public class laser : MonoBehaviour
         laserPS.SetParticles(particles, particles.Length);
     }
 
+    //check where the end laser position is at in the z axis
+    public float GetEndLaserPosition()
+    {
+        return hit.point.z;
+    }
+
+    //start of laser position along the z axis
+    public float GetStartLaserPosition()
+    {
+        return transform.position.z;
+    }
 
 
 }

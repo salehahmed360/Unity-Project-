@@ -48,11 +48,11 @@ public class laser : MonoBehaviour
             //Set start laser point
             laserMat.SetVector("_StartPoint", transform.position);
             //Set end laser point
-            
 
-          
+
+
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))
-            { 
+            {
                 // set particle number depending on distance
                 particleCount = Mathf.RoundToInt(hit.distance / (2 * laserScale));
                 if (particleCount < hit.distance / (2 * laserScale))
@@ -68,7 +68,7 @@ public class laser : MonoBehaviour
                 // make laser invisible after end point because laser clusters is 2 units
                 laserMat.SetVector("_EndPoint", hit.point); //end of the laser line stops once it hits any collision such as a wall or player
 
-               
+
 
                 //hit effects position when laser hits a wall or object
                 if (Hit != null)
@@ -87,10 +87,16 @@ public class laser : MonoBehaviour
                     }
                 }
 
-
-                if (hit.transform.tag=="player")
+                try
                 {
-                    killPlayer();
+                    if (hit.transform.tag == "player")
+                    {
+                        killPlayer();
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    print("error" + e);
                 }
             }
             else

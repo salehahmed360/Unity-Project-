@@ -87,17 +87,12 @@ public class laser : MonoBehaviour
                     }
                 }
 
-                try
+
+                if (hit.transform.tag == "player")
                 {
-                    if (hit.transform.tag == "player")
-                    {
-                        killPlayer();
-                    }
+                    killPlayer();
                 }
-                catch (System.Exception e)
-                {
-                    print("error" + e);
-                }
+
             }
             else
             {

@@ -64,7 +64,7 @@ public class PickUp : MonoBehaviour
 
     void PickUpObject(GameObject pickObj)
     {
-        if (pickObj.GetComponent<Rigidbody>() && pickObj.gameObject.layer==9)
+        if (pickObj.GetComponent<Rigidbody>() && pickObj.gameObject.layer==9 || pickObj.tag=="UselessBox")
         {
             Rigidbody rigidObj = pickObj.GetComponent<Rigidbody>();
             rigidObj.useGravity = false;

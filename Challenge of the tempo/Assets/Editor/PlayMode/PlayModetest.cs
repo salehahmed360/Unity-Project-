@@ -63,7 +63,7 @@ namespace Tests
            // RedTrigger redTrigger = testObject.AddComponent<RedTrigger>(); 
             List<GameObject> redBoxes = new List<GameObject>();
 
-            bool tagFound = false;
+            //bool tagFound = false;
             GameObject redBox = GameObject.Instantiate(new GameObject());
             //redBox.tag = "redBox1";
             redBoxes.Add(redBox);

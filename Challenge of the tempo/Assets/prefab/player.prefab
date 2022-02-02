@@ -160,7 +160,7 @@ MonoBehaviour:
   movementSpeed: 3
   jumpSpeed: 15
   gravity: -10
-  jumpHeight: 1
+  jumpHeight: 0.5
   groundCheck: {fileID: 6850959436306393056}
   groundDistance: 0.4
   groundMask:

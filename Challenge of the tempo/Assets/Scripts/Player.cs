@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     public Vector3 Jump(float jumpHeight, float gravity)
     {
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded )
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }

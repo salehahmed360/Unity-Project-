@@ -29,6 +29,7 @@ TagManager:
   - sector1b
   - sector2b
   - teleportBox
+  - UselessBox
   layers:
   - Default
   - TransparentFX

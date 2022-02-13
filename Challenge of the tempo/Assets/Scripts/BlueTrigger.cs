@@ -9,12 +9,32 @@ public class BlueTrigger : MonoBehaviour
     public Color origonalColor;
     public Renderer color;
     public bool blueCheck;
+
+    private string tag1;
+    private string tag2;
+    private string tag3;
     void Start()
     {
         blueBoxes = new TriggerBox();
-        allIn = new bool[3]; //each box is assigned true or false if all in greenBoxes
+
+        tag1 = "bluebox1";
+        tag2 = "bluebox2";
+        tag3 = "bluebox3";
+
+        allIn = new bool[3]; //each box is assigned true or false if all in blueBoxes
         color = gameObject.GetComponent<Renderer>(); //access box colour
         origonalColor = color.material.color; //gets the original colour on the box and stores it in this variable
+    }
+    private void Update()
+    {
+        if (blueBoxes.GetIsActive() == true)
+        {
+            blueCheck = true;
+        }
+        else
+        {
+            blueCheck = false;
+        }
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -24,54 +44,12 @@ public class BlueTrigger : MonoBehaviour
         {
             allIn[i] = false;
         }
-        CheckTagInList();
+
+        blueBoxes.CheckTagInList(allIn, tag1, tag2, tag3);
         bool doIt = true;  //if all boxes are in blueboxes so are detected and placed in the trigger it can set doit to true
-        doIt = CheckAllBoxesIn(doIt);
-        ActivateTrigger(doIt);  //if doit is true due to all boxes being deteced then we can trigger to make it blue 
+        doIt = blueBoxes.CheckAllBoxesIn(doIt, allIn);
+        blueBoxes.ActivateTrigger(doIt, color, Color.blue);  //if doit is true due to all boxes being deteced then we can trigger to make it blue 
 
-    }
-
-    private void ActivateTrigger(bool doIt)
-    {
-        if (doIt)
-        {
-
-            color.material.SetColor("_Color", Color.blue); //must have _Color otherwise it wont work 
-            blueCheck = true;
-        }
-    }
-
-    private bool CheckAllBoxesIn(bool doIt)
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            if (!allIn[i]) //if its not true then dont trigger nothing it goes index 0, index 1, index 2 which are all <3 and checks if each one is false 
-            {
-                doIt = false;
-                blueCheck = false;
-            }
-        }
-
-        return doIt;
-    }
-
-    private void CheckTagInList()
-    {
-        for (int i = 0; i < blueBoxes.Boxes.Count; i++)
-        {
-            if (blueBoxes.Boxes[i].tag == "bluebox1")
-            {
-                allIn[0] = true;
-            }
-            if (blueBoxes.Boxes[i].tag == "bluebox2")
-            {
-                allIn[1] = true;
-            }
-            if (blueBoxes.Boxes[i].tag == "bluebox3")
-            {
-                allIn[2] = true;
-            }
-        }
     }
 
     private void OnTriggerExit(Collider collision)
@@ -81,9 +59,8 @@ public class BlueTrigger : MonoBehaviour
         {
             if (blueBoxes.Boxes.Contains(collision.gameObject))
             {
-                blueCheck = false;
-
-                blueBoxes.Boxes.Remove(collision.gameObject); //remove that box you moved out 
+                blueBoxes.SetTriggerActive(false);
+                blueBoxes.Remove(collision.gameObject); //remove that box you moved out 
                 color.material.SetColor("_Color", origonalColor); //must have _Color otherwise it wont work 
 
             }

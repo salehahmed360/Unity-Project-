@@ -2,37 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerSelection : MonoBehaviour
-{
-    private RedTrigger redTrigger;
-    private GreenTrigger greenTrigger;
-    private BlueTrigger blueTrigger;
-    private PurpleTrigger purpleTrigger;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        redTrigger = GameObject.FindGameObjectWithTag("RedTrigger").GetComponent<RedTrigger>(); //accessing the script 
-        greenTrigger = GameObject.FindGameObjectWithTag("GreenTrigger").GetComponent<GreenTrigger>();
-        blueTrigger = GameObject.FindGameObjectWithTag("BlueTrigger").GetComponent<BlueTrigger>();
-        purpleTrigger = GameObject.FindGameObjectWithTag("PurpleTrigger").GetComponent<PurpleTrigger>();
-    }
+public class TriggerSelection
+{ 
 
     public RedTrigger GetRedTrigger()
     {
-        return redTrigger;
+        return GameObject.FindGameObjectWithTag("RedTrigger").GetComponent<RedTrigger>(); //accessing the script ;
     }
     public GreenTrigger GetGreenTrigger()
     {
-        return greenTrigger;
+        return GameObject.FindGameObjectWithTag("GreenTrigger").GetComponent<GreenTrigger>();
     }
     public BlueTrigger GetBlueTrigger()
     {
-        return blueTrigger;
+        return GameObject.FindGameObjectWithTag("BlueTrigger").GetComponent<BlueTrigger>();
     }
     public PurpleTrigger GetPurpleTrigger()
     {
-        return purpleTrigger;
+        return GameObject.FindGameObjectWithTag("PurpleTrigger").GetComponent<PurpleTrigger>();
     }
 
 

@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Sector1A : MonoBehaviour
 {
-    RedTrigger redtrigger, r;
-    GreenTrigger greentrigger, g;
-    BlueTrigger bluetrigger, b;
-    PurpleTrigger purpletrigger, p;
+    readonly TriggerSelection trigger;
 
     public GameObject parent; //using parent object to access its children to stop null pointer reference 
     private Animator animDoorLeft;
@@ -19,35 +16,22 @@ public class Sector1A : MonoBehaviour
         animDoorLeft = parent.transform.GetChild(0).GetComponent<Animator>();  //accessing first object in parent and accessing the animator component
         animDoorRight = parent.transform.GetChild(1).GetComponent<Animator>(); 
 
-        redtrigger = GameObject.FindGameObjectWithTag("RedTrigger").GetComponent<RedTrigger>(); //accessing the script 
-        greentrigger = GameObject.FindGameObjectWithTag("GreenTrigger").GetComponent<GreenTrigger>();
-        bluetrigger = GameObject.FindGameObjectWithTag("BlueTrigger").GetComponent<BlueTrigger>();
-        purpletrigger = GameObject.FindGameObjectWithTag("PurpleTrigger").GetComponent<PurpleTrigger>();
-
-        r = redtrigger;
-        g = greentrigger;
-        b = bluetrigger;
-        p = purpletrigger;
-
     }
 
     // Update is called once per frame
     void Update()
     { 
-       
-
-            doorOpenening();
-            doorClosing();
-        
+            DoorOpenening();
+            DoorClosing();
     }
 
     /* 
  * if its true sets the left and right door bool in animation to true 
  * this then open both doors 
  */
-    public void doorOpenening()
+    public void DoorOpenening()
     {
-        if (r.redCheck == true && p.purpleCheck == true && g.greenCheck == true)
+        if (trigger.GetRedTrigger().redCheck == true && trigger.GetPurpleTrigger().purpleCheck == true && trigger.GetGreenTrigger().greenCheck == true)
         {
             animDoorLeft.SetBool("LDisOpening", true);
             animDoorRight.SetBool("RDisOpening", true);
@@ -59,9 +43,9 @@ public class Sector1A : MonoBehaviour
      * checking if all boxes check is false or either
      * the then puts both doors to closing state as its false
      */
-    public void doorClosing()
+    public void DoorClosing()
     {
-        if (r.redCheck == false || p.purpleCheck == false || g.greenCheck == false)
+        if (trigger.GetRedTrigger().redCheck == false || trigger.GetPurpleTrigger().purpleCheck == false || trigger.GetGreenTrigger().greenCheck == false)
         {
             animDoorLeft.SetBool("LDisOpening", false);
             animDoorRight.SetBool("RDisOpening", false);

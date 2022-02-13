@@ -8,21 +8,12 @@ public class TeleportPortal : MonoBehaviour
 
     //outputPortal object
     public GameObject outputPortal;
-    // Start is called before the first frame update  
-    void Start()
-    { 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //detects the box placed on input portal
-     void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-
-        teleportBox(collision.gameObject);
+        StartCoroutine(DelayTeleportAction(3f, collision)); //delay time using the delay action which takes in the time to delay
+ 
+       // teleportBox(collision.gameObject);
 
     }
     //checks its portal box and teleports it into the center of the outputPortal
@@ -36,4 +27,10 @@ public class TeleportPortal : MonoBehaviour
         }
     }
 
+    //delay for certain amount of time and calls the teleportBox function
+    public IEnumerator DelayTeleportAction(float time, Collision collision)
+    {
+        yield return new WaitForSeconds(time);
+        teleportBox(collision.gameObject);
+    }
 }

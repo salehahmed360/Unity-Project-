@@ -8,7 +8,7 @@ public class PurpleTrigger : MonoBehaviour
     public bool[] allIn;
     public Color origonalColor;
     public Renderer color;
-    public bool purpleCheck;// = false; 
+    public bool purpleCheck; 
     void Start()
     {
 
@@ -18,22 +18,46 @@ public class PurpleTrigger : MonoBehaviour
         origonalColor = color.material.color; //gets the original colour on the box and stores it in this variable
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider collision)
     {
-
-
-        purpleBoxes.AddBox(collision.gameObject,"purplebox1", "purplebox2", "purplebox3"); 
+        purpleBoxes.AddBox(collision.gameObject, "purplebox1", "purplebox2", "purplebox3");
 
         for (int i = 0; i < 3; i++)
         {
             allIn[i] = false;
         }
+        CheckTagInList();
+        bool doIt = true;        //as all boxes are in purpleboxes so are detected and placed in the trigger it can set doit to true
+        doIt = CheckAllBoxesIn(doIt);
+        ActivateTrigger(doIt);     //as doit is true due to all boxes being deteced then we can trigger to make it purple 
+    }
+
+    private void ActivateTrigger(bool doIt)
+    {
+        if (doIt)
+        {
+
+            color.material.color = new Color(128, 0, 128); //must have _Color otherwise it wont work 
+            purpleCheck = true;
+        }
+    }
+
+    private bool CheckAllBoxesIn(bool doIt)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (!allIn[i]) //if its not true then dont trigger nothing it goes index 0, index 1, index 2 which are all <3 and checks if each one is false 
+            {
+                doIt = false;
+                purpleCheck = false;
+            }
+        }
+
+        return doIt;
+    }
+
+    private void CheckTagInList()
+    {
         for (int i = 0; i < purpleBoxes.Boxes.Count; i++)
         {
             if (purpleBoxes.Boxes[i].tag == "purplebox1")
@@ -49,25 +73,8 @@ public class PurpleTrigger : MonoBehaviour
                 allIn[2] = true;
             }
         }
-        //as all boxes are in purpleboxes so are detected and placed in the trigger it can set doit to true
-        bool doIt = true;
-
-        for (int i = 0; i < 3; i++)
-        {
-            if (!allIn[i]) //if its not true then dont trigger nothing it goes index 0, index 1, index 2 which are all <3 and checks if each one is false 
-            {
-                doIt = false;
-                purpleCheck = false;
-            }
-        }
-        //as doit is true due to all boxes being deteced then we can trigger to make it purple 
-        if (doIt)
-        {
-
-            color.material.color = new Color(128,0,128); //must have _Color otherwise it wont work 
-            purpleCheck = true;
-        }
     }
+
     private void OnTriggerExit(Collider collision)
     {
 

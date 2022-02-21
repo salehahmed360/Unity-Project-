@@ -32,7 +32,7 @@ public class GameOverScreen : MonoBehaviour
     {
         active = false;
         Time.timeScale = 1;
-        SceneManager.LoadScene(0); //restart to level 1 or 2
+        SceneManager.LoadScene(1); //restart to level 1 or 2
         
         }
 

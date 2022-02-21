@@ -10,7 +10,7 @@ public class VerticalDoor : MonoBehaviour
     void Start()
     {
         door = parent.transform.GetChild(0).GetComponent<Animator>();
-        doorTrigger = parent.transform.GetChild(3).GetComponent<doorTrigger>(); //accessing the last index which is the trigger and getting the doorTrigger script
+        doorTrigger = parent.transform.GetChild(1).GetComponent<doorTrigger>(); //accessing the last index which is the trigger and getting the doorTrigger script
 
     }
 

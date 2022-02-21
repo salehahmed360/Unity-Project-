@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser Toon Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 1645209392318072, guid: d2d89a48f26d8e24fba34789fd97784e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4436512035279380, guid: d2d89a48f26d8e24fba34789fd97784e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -141,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4721710406146136, guid: d2d89a48f26d8e24fba34789fd97784e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4721710406146136, guid: d2d89a48f26d8e24fba34789fd97784e, type: 3}
       propertyPath: m_LocalScale.y
@@ -338,6 +342,11 @@ PrefabInstance:
       propertyPath: laserColor.b
       value: 0.41176474
       objectReference: {fileID: 0}
+    - target: {fileID: 976064479299598211, guid: d2d89a48f26d8e24fba34789fd97784e,
+        type: 3}
+      propertyPath: laserScale
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1106899389702772056, guid: d2d89a48f26d8e24fba34789fd97784e,
         type: 3}
       propertyPath: m_Enabled
@@ -367,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 6220943111878476572, guid: 3bdb97e7fd31ad845855b31525de1a1a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.000000014901
       objectReference: {fileID: 0}
     - target: {fileID: 6220943111878476572, guid: 3bdb97e7fd31ad845855b31525de1a1a,
         type: 3}
@@ -377,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 6220943111878476572, guid: 3bdb97e7fd31ad845855b31525de1a1a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.38
+      value: -0.53787
       objectReference: {fileID: 0}
     - target: {fileID: 6220943111878476572, guid: 3bdb97e7fd31ad845855b31525de1a1a,
         type: 3}
@@ -427,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 6220943111878476572, guid: 3bdb97e7fd31ad845855b31525de1a1a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.49081
       objectReference: {fileID: 0}
     - target: {fileID: 6220943111878476572, guid: 3bdb97e7fd31ad845855b31525de1a1a,
         type: 3}

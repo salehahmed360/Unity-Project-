@@ -25,7 +25,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        Cursor.lockState = CursorLockMode.Locked;//mouse locks to screen 
+        Cursor.visible = false; //makes the cursor invisible
+
         characterController = GetComponent<CharacterController>();
         Movement = new Movement(movementSpeed);
     }

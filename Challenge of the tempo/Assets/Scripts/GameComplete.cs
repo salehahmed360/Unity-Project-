@@ -18,6 +18,10 @@ public class GameComplete : MonoBehaviour
         {
             Restart();
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene(0);//loads menu screen
+        }
     }
 
     public void GameCompletion()
@@ -29,7 +33,7 @@ public class GameComplete : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0); //restart to level 1 or 2
+        SceneManager.LoadScene(1); //restart to level 1 or 2
 
     }
 }

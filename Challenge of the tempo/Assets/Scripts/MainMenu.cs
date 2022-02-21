@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
-{ 
+{
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;//remove mouse from locking to screen 
+        Cursor.visible = true; //makes the cursor visible
+    }
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
-
-       
-    
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1); 
     }
 }

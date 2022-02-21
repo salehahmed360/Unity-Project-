@@ -19,6 +19,10 @@ public class GameOverScreen : MonoBehaviour
         {
             Restart();
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene(0);//loads menu screen
+        }
     }
 
     public void GameOver()

@@ -34,7 +34,7 @@ public class Door : MonoBehaviour
         {
             animDoorLeft.SetBool("LDisOpening", true);
             animDoorRight.SetBool("RDisOpening", true);
-
+            
         } 
     }
 
@@ -48,6 +48,9 @@ public class Door : MonoBehaviour
         {
             animDoorLeft.SetBool("LDisOpening", false);
             animDoorRight.SetBool("RDisOpening", false);
+            
         }
     }
+
+
 }

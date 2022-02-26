@@ -9,9 +9,11 @@ public class Portal2 : MonoBehaviour
     Sector2B sector2b;
     //public int index = 0;
     public GameComplete gamecomplete;
+    
     void Start()
     {
         sector2b = GameObject.FindGameObjectWithTag("sector2b").GetComponent<Sector2B>();
+        
     }
 
     // Update is called once per frame
@@ -27,8 +29,7 @@ public class Portal2 : MonoBehaviour
             if (sector2b.levelComplete == true)
             {
                 Time.timeScale = 0;
-                gamecomplete.GameCompletion();
-                //SceneManager.LoadScene(index);
+                gamecomplete.GameCompletion(); 
             }
         }
     }

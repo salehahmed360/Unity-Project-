@@ -5,10 +5,15 @@ using UnityEngine;
 public class TeleportPortal : MonoBehaviour
 {
 
-
+    private AudioSource inputSound;
     //outputPortal object
     public GameObject outputPortal;
     //detects the box placed on input portal
+
+    private void Start()
+    {
+        inputSound = gameObject.GetComponent<AudioSource>();
+    }
     void OnCollisionEnter(Collision collision)
     {
         StartCoroutine(DelayTeleportAction(3f, collision)); //delay time using the delay action which takes in the time to delay
@@ -31,6 +36,7 @@ public class TeleportPortal : MonoBehaviour
     public IEnumerator DelayTeleportAction(float time, Collision collision)
     {
         yield return new WaitForSeconds(time);
+        inputSound.Play();
         teleportBox(collision.gameObject);
     }
 }

@@ -9,7 +9,11 @@ public class Sector1B : MonoBehaviour
     public GameObject parent; //using parent object to access its children to stop null pointer reference 
     private Animator animDoorLeft;
     private Animator animDoorRight;
-    public bool openPortal = false; 
+    public bool openPortal = false;
+
+    private int playing = 1;
+    public AudioSource openDoor;
+    public AudioSource closeDoor;
 
     void Start()
     {
@@ -38,6 +42,11 @@ public class Sector1B : MonoBehaviour
     {
         if (trigger.GetRedTrigger().redCheck == true && trigger.GetPurpleTrigger().purpleCheck == true && trigger.GetGreenTrigger().greenCheck == true && trigger.GetBlueTrigger().blueCheck == true)
         {
+            if (playing == 1)
+            {
+                openDoor.Play();
+                playing = 0;
+            }
             openPortal = true;
             animDoorLeft.SetBool("LDisOpening", true);
             animDoorRight.SetBool("RDisOpening", true);
@@ -53,6 +62,12 @@ public class Sector1B : MonoBehaviour
     {
         if (trigger.GetRedTrigger().redCheck == false || trigger.GetPurpleTrigger().purpleCheck == false || trigger.GetGreenTrigger().greenCheck == false || trigger.GetBlueTrigger().blueCheck == false)
         {
+            if (playing == 0)
+            {
+                openDoor.Play();
+                playing = 1;
+
+            }
             openPortal = false;
             animDoorLeft.SetBool("LDisOpening", false);
             animDoorRight.SetBool("RDisOpening", false);

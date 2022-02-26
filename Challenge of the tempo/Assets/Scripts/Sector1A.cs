@@ -10,6 +10,10 @@ public class Sector1A : MonoBehaviour
     private Animator animDoorLeft;
     private Animator animDoorRight;
 
+    private int playing=1;
+    public AudioSource openDoor;
+    public AudioSource closeDoor;
+
     void Start()
     {
         trigger = new TriggerSelection();
@@ -33,7 +37,13 @@ public class Sector1A : MonoBehaviour
     public void DoorOpenening()
     {
         if (trigger.GetRedTrigger().redCheck == true && trigger.GetPurpleTrigger().purpleCheck == true && trigger.GetGreenTrigger().greenCheck == true)
-        {
+        { 
+            if (playing ==1)
+            {
+                openDoor.Play();
+                playing = 0; 
+            } 
+
             animDoorLeft.SetBool("LDisOpening", true);
             animDoorRight.SetBool("RDisOpening", true);
 
@@ -48,8 +58,15 @@ public class Sector1A : MonoBehaviour
     {
         if (trigger.GetRedTrigger().redCheck == false || trigger.GetPurpleTrigger().purpleCheck == false || trigger.GetGreenTrigger().greenCheck == false)
         {
+            if (playing == 0)
+            {
+                openDoor.Play();
+                playing = 1;
+            }
+
             animDoorLeft.SetBool("LDisOpening", false);
             animDoorRight.SetBool("RDisOpening", false);
         }
     }
+
 }

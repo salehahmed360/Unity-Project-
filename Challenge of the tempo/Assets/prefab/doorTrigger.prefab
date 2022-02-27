@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9206182834126227269}
   - component: {fileID: 9206182834126227265}
   - component: {fileID: 9206182834126227264}
+  - component: {fileID: 1497980054628704182}
   m_Layer: 0
   m_Name: doorTrigger
   m_TagString: doorTrigger
@@ -326,6 +327,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorStatues: 0
+  cutScene: {fileID: 0}
+  doorOpen: {fileID: 0}
+  doorClose: {fileID: 0}
 --- !u!65 &9206182834126227264
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -339,3 +343,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.22, z: 1}
   m_Center: {x: 0.5, y: 0.03, z: -0.5}
+--- !u!114 &1497980054628704182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9206182834126227275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3451a16feba934fb6d5b082a676300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutScene: {fileID: 0}

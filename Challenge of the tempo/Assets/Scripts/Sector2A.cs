@@ -13,6 +13,8 @@ public class Sector2A : MonoBehaviour
     private int playing = 1;
     public AudioSource openDoor;
     public AudioSource closeDoor;
+
+    public GameObject cutScene;
     void Start()
     {
         trigger = new TriggerSelection();
@@ -44,6 +46,7 @@ public class Sector2A : MonoBehaviour
             {
                 openDoor.Play();
                 playing = 0;
+                cutScene.SetActive(true);
 
             }
             animDoorLeft.SetBool("LDisOpening", true);

@@ -15,6 +15,8 @@ public class Sector2B : MonoBehaviour
     public AudioSource openDoor;
     public AudioSource closeDoor;
 
+    public GameObject cutScene;
+
     void Start()
     {
         trigger = new TriggerSelection();
@@ -46,6 +48,7 @@ public class Sector2B : MonoBehaviour
             {
                 openDoor.Play();
                 playing = 0;
+                cutScene.SetActive(true);
             }
 
             levelComplete = true;

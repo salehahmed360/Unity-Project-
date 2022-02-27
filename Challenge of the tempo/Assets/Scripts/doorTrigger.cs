@@ -5,7 +5,7 @@ using UnityEngine;
 public class doorTrigger : MonoBehaviour
 {
     private GameObject doorBox;
-    public bool doorStatues; //if the doorTrigger has a box on it or not
+    public bool doorStatues; //if the doorTrigger has a box on it or not 
 
     public AudioSource doorOpen, doorClose;
     void Start()
@@ -24,8 +24,8 @@ public class doorTrigger : MonoBehaviour
         if (other.CompareTag("doorBox") || other.CompareTag("teleportBox"))
         {
             
-            doorStatues = true;
-            doorOpen.Play();
+            doorStatues = true; 
+            doorOpen.Play(); 
 
         }
     }

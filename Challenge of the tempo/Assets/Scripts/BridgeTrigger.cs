@@ -9,6 +9,8 @@ public class BridgeTrigger : MonoBehaviour
     private Renderer color;
     public GameObject bridge;
     private Collider bridgeCollider;
+
+    public GameObject cutScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class BridgeTrigger : MonoBehaviour
         {
             bridgeCollider.enabled = true; 
             color.material.SetColor("_Color", Color.green); //sets the colour to green if the box is placed on the trigger
+            cutScene.SetActive(true);
         }
     }
 

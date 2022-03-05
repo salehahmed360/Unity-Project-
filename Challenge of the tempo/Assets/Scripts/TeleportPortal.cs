@@ -18,7 +18,7 @@ public class TeleportPortal : MonoBehaviour
     {
         StartCoroutine(DelayTeleportAction(3f, collision)); //delay time using the delay action which takes in the time to delay
  
-       // teleportBox(collision.gameObject);
+     
 
     }
     //checks its portal box and teleports it into the center of the outputPortal

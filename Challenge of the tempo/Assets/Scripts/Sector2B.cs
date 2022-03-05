@@ -44,12 +44,13 @@ public class Sector2B : MonoBehaviour
     {
         if (trigger.GetRedTrigger().redCheck == true && trigger.GetPurpleTrigger().purpleCheck == true && trigger.GetGreenTrigger().greenCheck == true && trigger.GetBlueTrigger().blueCheck == true)
         {
-            if (playing == 1)
+            openDoor.Play();
+
+            if (cutScene != null)
             {
-                openDoor.Play();
-                playing = 0;
                 cutScene.SetActive(true);
             }
+            playing = 0;
 
             levelComplete = true;
             animDoorLeft.SetBool("LDisOpening", true);

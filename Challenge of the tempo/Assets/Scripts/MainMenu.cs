@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1; //resume time to normal
         buttonPressed.Play();
         StartCoroutine(DelayScreenAction(0.3f));
     }

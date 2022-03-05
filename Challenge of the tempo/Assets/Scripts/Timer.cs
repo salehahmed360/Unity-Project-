@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
      
-    public float timevalue = 60f;
-    public Text timerText;
+    public float timevalue = 60f; //time in seconds 
+    public Text timerText; //timer text UI
 
     public  GameOverScreen gameOver;
 
@@ -27,8 +27,8 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            timevalue = 0; 
-            Time.timeScale = 0;
+            timevalue = 0; //stops timer exceeding below 0
+            Time.timeScale = 0;//pauses time once timer reaches 0 
              
             gameOver.GameOver();  
         }

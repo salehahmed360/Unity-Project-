@@ -44,8 +44,12 @@ public class Sector1B : MonoBehaviour
         {
             if (playing == 1)
             {
+
                 openDoor.Play();
-                cutScene.SetActive(true);
+                if (cutScene != null)
+                {
+                    cutScene.SetActive(true);
+                }
                 playing = 0;
             }
             openPortal = true;

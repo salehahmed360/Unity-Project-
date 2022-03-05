@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Portal2 : MonoBehaviour
 {
-    // Start is called before the first frame update
     Sector2B sector2b;
-    //public int index = 0;
     public GameComplete gamecomplete;
     
     void Start()
@@ -16,20 +14,14 @@ public class Portal2 : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("player")) //checks player crossed
         {
             if (sector2b.levelComplete == true)
             {
-                Time.timeScale = 0;
-                gamecomplete.GameCompletion(); 
+                Time.timeScale = 0; //pause time
+                gamecomplete.GameCompletion();  //loads game complete 
             }
         }
     }

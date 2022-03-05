@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CutScene2 : MonoBehaviour
 {
-    public int scene;
-    public GameObject FPcam;
+    public int scene;  //what camera will be displayed from below
+    public GameObject FPcam;//player main camera
     public GameObject cam1;
     public GameObject cam2;
     public GameObject cam3;
@@ -14,8 +14,7 @@ public class CutScene2 : MonoBehaviour
     public GameObject cam6;
     public GameObject cam7;
     public GameObject cam8;
-
-    // Start is called before the first frame update
+     
     void Start()
     {
 

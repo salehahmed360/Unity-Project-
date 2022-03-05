@@ -17,7 +17,7 @@ public class Sector2A : MonoBehaviour
     public GameObject cutScene;
     void Start()
     {
-        trigger = new TriggerSelection();
+        trigger = new TriggerSelection(); //to allow access to all the trigger from one class without repeating it for each sector
 
         animDoorLeft = parent.transform.GetChild(0).GetComponent<Animator>();  //accessing first object in parent and accessing the animator component
         animDoorRight = parent.transform.GetChild(1).GetComponent<Animator>();
@@ -42,11 +42,17 @@ public class Sector2A : MonoBehaviour
     {
         if (trigger.GetRedTrigger().redCheck == true && trigger.GetBlueTrigger().blueCheck == true)
         {
+            //as this function is in the update method it will keep repeating the sound so this if statement works like a lock state to stop sound always repeating
+            //it will repeat once reset form the door closing
             if (playing == 1)
             {
                 openDoor.Play();
+                
+                if (cutScene != null)
+                {
+                    cutScene.SetActive(true);
+                }
                 playing = 0;
-                cutScene.SetActive(true);
 
             }
             animDoorLeft.SetBool("LDisOpening", true);

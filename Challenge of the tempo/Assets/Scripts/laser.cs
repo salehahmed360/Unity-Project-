@@ -8,7 +8,7 @@ using UnityEditor;
 //known as Hovel studio
 
 
-public class laser : MonoBehaviour
+public class Laser : MonoBehaviour
 {
     public float laserScale = 1;
     public Color laserColor = new Vector4(1, 1, 1, 1);

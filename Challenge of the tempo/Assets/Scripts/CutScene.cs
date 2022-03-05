@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class CutScene : MonoBehaviour
 {
-    public int scene;
-    public GameObject FPcam;
+    public int scene; //what camera will be displayed from below
+    public GameObject FPcam; //player main camera
     public GameObject cam1;
     public GameObject cam2;
     public GameObject cam3;
     public GameObject cam4;
     public GameObject cam5;
-
-    // Start is called before the first frame update
+ 
     void Start()
     { 
 
@@ -41,7 +40,7 @@ public class CutScene : MonoBehaviour
     { 
         cam1.SetActive(true);
         FPcam.SetActive(false);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3); //wait 3 seconds before switching back to first person
         FPcam.SetActive(true);
         cam1.SetActive(false);
         Destroy(gameObject); //destroy camera to stop cutscene from playing again

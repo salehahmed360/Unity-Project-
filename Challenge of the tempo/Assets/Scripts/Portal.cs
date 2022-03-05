@@ -5,26 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    Sector1B sector1b;
+   
+    Sector1B sector1b; //sector b class to check if all triggers are active in the second section
     public int index =1;
 
-    public AudioSource portalAudio;
+    private AudioSource portalAudio;//portal audio once player crosses the portal 
     void Start()
     {
 
         portalAudio = gameObject.GetComponent<AudioSource>();
-        sector1b = GameObject.FindGameObjectWithTag("sector1b").GetComponent<Sector1B>();
+        sector1b = GameObject.FindGameObjectWithTag("sector1b").GetComponent<Sector1B>();//accesses the Sector1B without needing its object
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+     
 
     public void OnTriggerEnter(Collider other)
     {
+        //check if its player then checks if all triggers are active which opens the portal 
         if (other.CompareTag("player"))
         {
             if (sector1b.openPortal == true) 

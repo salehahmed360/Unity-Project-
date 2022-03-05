@@ -26,7 +26,7 @@ namespace Tests
         {
             float wallPos = wall.transform.position.z + 1; //making the wall in front of the laser
 
-            var l = laser.GetComponent<laser>();
+            var l = laser.GetComponent<Laser>();
 
             yield return new WaitForSeconds(1f); 
 
@@ -39,7 +39,7 @@ namespace Tests
             //uses objects in the resource folder to instantiate them and check the laser hits the wall and if the wall name is "wall 1"
             float wallPos = wall.transform.position.z+1; 
 
-            var l = laser.GetComponent<laser>();
+            var l = laser.GetComponent<Laser>();
 
             yield return new WaitForSeconds(1f);
 
@@ -56,7 +56,7 @@ namespace Tests
             var playerPos = player.transform.position;
             playerPos = laser.transform.position;
 
-            var l = laser.GetComponent<laser>(); //using the laser script to access its hit
+            var l = laser.GetComponent<Laser>(); //using the laser script to access its hit
 
             yield return new WaitForSeconds(1f);
 

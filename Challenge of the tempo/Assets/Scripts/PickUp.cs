@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public float pickupRange = 1f;//how close we can pickup an object
+    public float pickupRange = 5f;//how close we can pickup an object
     public Transform holdParent;
     private GameObject heldObj;
     public float moveForce = 250; //the speed the heldObj will move to the holdParent object
+     
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         /*
          * left mouse click should trigger to hold object and another click to let go 
          * checks the held object is null so if we are not already holding it it uses raycast based on the pickuprange set and calls the pickup object 
@@ -30,13 +33,17 @@ public class PickUp : MonoBehaviour
          * if the heldObj is not null we check its distance by subtractint the holdParent which is the hand and the heldObj 
          * using moveDirection we add force to to the heldObj
          */
+
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.green);
         if (Input.GetMouseButtonDown(0)){
             if (heldObj == null)
             { 
                 RaycastHit hit;
-                
+
+               
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
-                {
+                {  
+
                     PickUpObject(hit.transform.gameObject);
                 }
             }
@@ -55,7 +62,7 @@ public class PickUp : MonoBehaviour
     //update the heldObj position each frame
     void MoveObject()
     {
-        if(Vector3.Distance(heldObj.transform.position, holdParent.position) > 0.2f)
+        if(Vector3.Distance(heldObj.transform.position, holdParent.position) > 0.1f)
         {
             Vector3 moveDirection =(holdParent.position - heldObj.transform.position);
             heldObj.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
@@ -70,7 +77,10 @@ public class PickUp : MonoBehaviour
             rigidObj.useGravity = false;
             rigidObj.drag = 10;
 
-            rigidObj.transform.parent = holdParent; //holdParent is now the parent of the pickObj 
+              rigidObj.transform.parent = holdParent; //holdParent is now the parent of the pickObj 
+
+           
+            
             heldObj = pickObj; //heldObj is not null no more
         }
     }

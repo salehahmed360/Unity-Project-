@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -18,27 +19,28 @@ public class Player : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
 
-    public Movement Movement;
-    public IUnityService UnityService = new UnityService();
 
+
+    public Movement Movement;
+    public IUnityService UnityService = new UnityService(); 
      
-    // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;//mouse locks to screen 
-        Cursor.visible = false; //makes the cursor invisible
 
         characterController = GetComponent<CharacterController>();
         Movement = new Movement(movementSpeed);
     }
-
-    // Update is called once per frame
     void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if (Input.GetKeyDown(KeyCode.E))
+        { 
+                SceneManager.LoadScene(1);
+
+        }
+
         try
         { 
-             GroundCheck();
+             GroundCheck(); //check we are touching ground to jump
         }catch(System.Exception e)
         {
             print("error"+e);
@@ -50,12 +52,12 @@ public class Player : MonoBehaviour
 
         Vector3 movement = transform.right * x+ transform.forward * z;
 
-        characterController.Move(Movement.CalMovemet(movement*movementSpeed*UnityService.GetDeltaTime()));
+        characterController.Move(Movement.CalMovemet(movement*movementSpeed*UnityService.GetDeltaTime())); //moves player by accessing Move function which comes with the character controller
 
         characterController.Move(Jump(jumpHeight,gravity) * UnityService.GetDeltaTime());
 
     } 
-    public Vector3 Jump(float jumpHeight, float gravity)
+    public Vector3 Jump(float jumpHeight, float gravity) //jump using space which takes in the jump height and the gravity the player drops when jumper
     {
 
         if (Input.GetButtonDown("Jump") && isGrounded )
@@ -78,5 +80,7 @@ public class Player : MonoBehaviour
             velocity.y = -2f;
         }
     } 
+
+     
 
 }

@@ -11,8 +11,8 @@ public class Sector1A : MonoBehaviour
     private Animator animDoorRight;
 
     private int playing=1;
-    public AudioSource openDoor;
-    public AudioSource closeDoor;
+    public AudioSource openDoor; //audio sound for opening door
+    public AudioSource closeDoor; //audio sound for closing door
 
     public GameObject cutScene;
 
@@ -43,7 +43,10 @@ public class Sector1A : MonoBehaviour
             if (playing ==1)
             {
                 openDoor.Play();
-                cutScene.SetActive(true);
+                if (cutScene != null)
+                {
+                    cutScene.SetActive(true);
+                }
                 playing = 0; 
             } 
 

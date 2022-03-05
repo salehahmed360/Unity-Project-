@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameComplete : MonoBehaviour
 {
     private AudioSource gameCompleteAudio;
-    // Start is called before the first frame update
     void Start()
     {
         gameCompleteAudio = gameObject.GetComponent<AudioSource>();
@@ -16,7 +15,7 @@ public class GameComplete : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)) //to reset the game
         {
             Restart();
         }
@@ -27,7 +26,7 @@ public class GameComplete : MonoBehaviour
         }
     }
 
-    public void GameCompletion()
+    public void GameCompletion() //activate the game complete screen
     {
         this.gameObject.SetActive(true);
     }
@@ -35,7 +34,7 @@ public class GameComplete : MonoBehaviour
 
     public void Restart()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1; //stops the game from moving 
         gameCompleteAudio.Stop();
         SceneManager.LoadScene(1); //restart to level 1 or 2
 

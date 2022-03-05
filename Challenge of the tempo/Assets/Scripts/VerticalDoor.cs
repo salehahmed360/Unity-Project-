@@ -5,16 +5,14 @@ using UnityEngine;
 public class VerticalDoor : MonoBehaviour
 {
     public GameObject parent; //using parent object to access its children to stop null pointer reference
-    private doorTrigger doorTrigger;
+    private DoorTrigger doorTrigger;
     private Animator door;
     void Start()
     {
         door = parent.transform.GetChild(0).GetComponent<Animator>();
-        doorTrigger = parent.transform.GetChild(1).GetComponent<doorTrigger>(); //accessing the last index which is the trigger and getting the doorTrigger script
+        doorTrigger = parent.transform.GetChild(1).GetComponent<DoorTrigger>(); //accessing the last index which is the trigger and getting the doorTrigger script
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         doorOpenening();

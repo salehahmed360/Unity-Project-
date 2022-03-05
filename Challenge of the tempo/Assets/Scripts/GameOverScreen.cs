@@ -7,45 +7,55 @@ public class GameOverScreen : MonoBehaviour
 {
     public bool active = false;
     private AudioSource gameOverAudio;
-    // Start is called before the first frame update
     void Start()
     {
         gameOverAudio = gameObject.GetComponent<AudioSource>();
-        gameOverAudio.Play();
-    }
+        if (gameOverAudio != null)
+        {
+            gameOverAudio.Play();
+        }
+        }
 
     // Update is called once per frame
     void Update()
     {
-         if (Input.GetKeyDown(KeyCode.E))
+         if (Input.GetKeyDown(KeyCode.E)) //restart game
         {
             Restart();
         }
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M)) //return to menu
         {
-           
             SceneManager.LoadScene(0);//loads menu screen
-            gameOverAudio.Stop();
+            if (gameOverAudio != null)
+            {
+                
+                gameOverAudio.Stop();
+            }
         }
     }
 
     public void GameOver()
     {
         
-        active = true;
+        active = true; //to test the game over screen is activated
         this.gameObject.SetActive(true);
        
     }
 
 
-    public void Restart()
+    public void Restart() //restart the game from level 1
     {
         
         active = false;
         Time.timeScale = 1;
-        gameOverAudio.Stop();
-        SceneManager.LoadScene(1); //restart to level 1 or 2
-        
+
+        if (gameOverAudio != null)
+        {
+            gameOverAudio.Stop();
+          
         }
+        SceneManager.LoadScene(1); //restart to level 1 or 2
+
+    }
 
 }

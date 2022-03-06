@@ -25,7 +25,10 @@ public class DoorTrigger : MonoBehaviour
 
     public void OnTriggerExit(Collider other) //upon removing the box sets the doorStatues to false 
     {
+        if (other.CompareTag("doorBox") || other.CompareTag("teleportBox"))
+        {
             doorClose.Play();
-            doorStatues = false; 
+            doorStatues = false;
+        }
     }
 }

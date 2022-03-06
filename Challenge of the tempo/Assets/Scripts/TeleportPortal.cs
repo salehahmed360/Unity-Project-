@@ -9,6 +9,7 @@ public class TeleportPortal : MonoBehaviour
     //outputPortal object
     public GameObject outputPortal;
     //detects the box placed on input portal
+    public bool isPlaced; //if player removes box from input teleport it gets activated to false only teleports if its true
 
     private void Start()
     {
@@ -16,27 +17,39 @@ public class TeleportPortal : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine(DelayTeleportAction(3f, collision)); //delay time using the delay action which takes in the time to delay
- 
-     
+        if (collision.gameObject.CompareTag("teleportBox") && collision != null)
+        {
+            isPlaced = true;
+            StartCoroutine(DelayTeleportAction(3f, collision)); //delay time using the delay action which takes in the time to delay 
+        }
 
     }
     //checks its portal box and teleports it into the center of the outputPortal
-    void teleportBox(GameObject box)
+    void TeleportBox(GameObject box)
     {
-        if (box.gameObject.CompareTag("teleportBox") && box != null)
-        {
             //get the center of the output portal to move the box into the center 
             var center = outputPortal.GetComponent<Renderer>().bounds.center;
             box.transform.position = center;
-        }
     }
 
     //delay for certain amount of time and calls the teleportBox function
     public IEnumerator DelayTeleportAction(float time, Collision collision)
     {
         yield return new WaitForSeconds(time);
-        inputSound.Play();
-        teleportBox(collision.gameObject);
+        if (collision.gameObject.CompareTag("teleportBox") && collision != null && isPlaced == true)
+        {
+            inputSound.Play();
+            TeleportBox(collision.gameObject);
+        }
+        
+      
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("teleportBox"))
+        {
+            isPlaced = false;
+        }
+        
     }
 }

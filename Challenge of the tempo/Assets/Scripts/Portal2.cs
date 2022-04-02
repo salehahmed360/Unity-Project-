@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Portal2 : MonoBehaviour
 {
-    Sector2B sector2b;
-    public GameComplete gamecomplete;
+    private Sector2B sector2b;
+    public GameComplete gamecomplete; //accessing the game complete script to activate the game complete screen
     
     void Start()
     {
-        sector2b = GameObject.FindGameObjectWithTag("sector2b").GetComponent<Sector2B>();
+        sector2b = GameObject.FindGameObjectWithTag("sector2b").GetComponent<Sector2B>(); //finds object with sector2b tag and gets the script compoenents class SectorB to check if level has been completed or not
         
     }
 

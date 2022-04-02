@@ -2,25 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//many thanks to Zeppelin Games for the example provided
+//link at https://www.youtube.com/watch?v=GgLREaLUaac&t=323s&ab_channel=ZeppelinGames of the tutorial followed
 public class PickUp : MonoBehaviour
 {
     public float pickupRange = 5f;//how close we can pickup an object
     public Transform holdParent;
     private GameObject heldObj;
     public float moveForce = 250; //the speed the heldObj will move to the holdParent object
-     
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
-    {
-
+    { 
         /*
          * left mouse click should trigger to hold object and another click to let go 
          * checks the held object is null so if we are not already holding it it uses raycast based on the pickuprange set and calls the pickup object 

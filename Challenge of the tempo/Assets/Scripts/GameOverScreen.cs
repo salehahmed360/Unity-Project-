@@ -47,7 +47,7 @@ public class GameOverScreen : MonoBehaviour
     {
         
         active = false;
-        Time.timeScale = 1;
+        Time.timeScale = 1; //as time stopped this returns it back to normal
 
         if (gameOverAudio != null)
         {

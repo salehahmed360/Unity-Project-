@@ -14,7 +14,7 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
-             laser = GameObject.Instantiate(Resources.Load("laser 2", typeof(GameObject))) as GameObject;
+             laser = GameObject.Instantiate(Resources.Load("laser 2", typeof(GameObject))) as GameObject;//using the laser resource from the resource folder
              wall = GameObject.Instantiate(Resources.Load("wall 1", typeof(GameObject))) as GameObject;
         }
 

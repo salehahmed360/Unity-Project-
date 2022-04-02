@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+
+//many thanks to Brackeys
+//for giving example of SETTINGS MENU in Unity
+//Available at: https://www.youtube.com/watch?v=YOaYQrN1oYQ&ab_channel=Brackeys 
 public class SettingMenu : MonoBehaviour
 {
     public new AudioMixer audio;

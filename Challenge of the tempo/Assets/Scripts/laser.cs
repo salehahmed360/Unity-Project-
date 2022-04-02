@@ -4,9 +4,10 @@ using System.Runtime.Serialization.Formatters;
 using System;
 using UnityEngine;
 using UnityEditor;
-//most of the code here is from third party source from unity store
-//known as Hovel studio
 
+//many thanks to Hovel studio from Unity store
+//@UnityAssetStore Available at: https://assetstore.unity.com/packages/vfx/particles/3d-toon-lasers-168810  
+ 
 
 public class Laser : MonoBehaviour
 {

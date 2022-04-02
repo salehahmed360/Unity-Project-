@@ -53,7 +53,7 @@ public class CutScene2 : MonoBehaviour
     {
         cam1.SetActive(true);
         FPcam.SetActive(false);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3);//waits 3 seconds before activting the first person camera
         FPcam.SetActive(true);
         cam1.SetActive(false);
         Destroy(gameObject); //destroy camera to stop cutscene from playing again

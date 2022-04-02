@@ -7,7 +7,7 @@ public class MouseLook : MonoBehaviour
 
     public float mouseSensitivty = 100f;
     public Transform player;
-    float XRotation = 0f;
+    private float XRotation = 0f;
     void Start()
     { 
         Cursor.lockState = CursorLockMode.Locked; //locks cursor to the center of the screen 

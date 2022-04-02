@@ -11,15 +11,13 @@ public class Player : MonoBehaviour
     public float jumpSpeed = 15;
     public float gravity = -10f; 
 
-    Vector3 velocity;
+    public Vector3 velocity;
     public float jumpHeight;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    bool isGrounded;
-
-
+    public bool isGrounded;
 
     public Movement Movement;
     public IUnityService UnityService = new UnityService(); 
@@ -30,13 +28,30 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Movement = new Movement(movementSpeed);
     }
-    void Update()
+
+    //restart from level 1
+    public void Restart()
     {
         if (Input.GetKeyDown(KeyCode.E))
-        { 
-                SceneManager.LoadScene(1);
+        {
+            SceneManager.LoadScene(1);
 
         }
+    }
+    //return to the main menu 
+    public void MainMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene(0);
+
+        }
+    }
+    void Update()
+    {
+
+        Restart();
+        MainMenu();
 
         try
         { 

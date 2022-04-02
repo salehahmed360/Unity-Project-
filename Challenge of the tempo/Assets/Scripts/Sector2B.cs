@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sector2B : MonoBehaviour
 {
-     TriggerSelection trigger;
+    private TriggerSelection trigger;
 
     public GameObject parent; //using parent object to access its children to stop null pointer reference 
     private Animator animDoorLeft;
@@ -19,7 +19,7 @@ public class Sector2B : MonoBehaviour
 
     void Start()
     {
-        trigger = new TriggerSelection();
+        trigger = new TriggerSelection(); //access the triggers scripts
 
         animDoorLeft = parent.transform.GetChild(0).GetComponent<Animator>();  //accessing first object in parent and accessing the animator component
         animDoorRight = parent.transform.GetChild(1).GetComponent<Animator>(); 

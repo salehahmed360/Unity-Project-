@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
    
-    Sector1B sector1b; //sector b class to check if all triggers are active in the second section
-    public int index =1;
+    private Sector1B sector1b; //sector b class to check if all triggers are active in the second section
+    public int index =1; //scene index
 
     private AudioSource portalAudio;//portal audio once player crosses the portal 
     void Start()

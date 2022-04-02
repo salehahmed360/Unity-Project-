@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public interface ITimer
 {
-    float SetTimeValue(float value);
-    string GetTimerText();
+    float SetTimeValue(float value); //setting the time in seconds
+    string GetTimerText(); 
 
-    string DisplayTime(float timeToDisplay);
+    string DisplayTime(float timeToDisplay); 
 
 
 }
@@ -36,7 +36,7 @@ public class DisplayTimer: ITimer
     {
         if (timeToDisplay < 0)
         {
-            timeToDisplay = 0;
+            timeToDisplay = 0; //stops timer from going below 0 
         }
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);//round timer to minutes
         float seconds = Mathf.FloorToInt(timeToDisplay % 60); //round timer to seconds by using modula

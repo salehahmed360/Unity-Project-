@@ -9,7 +9,7 @@ public class VerticalDoor : MonoBehaviour
     private Animator door;
     void Start()
     {
-        door = parent.transform.GetChild(0).GetComponent<Animator>();
+        door = parent.transform.GetChild(0).GetComponent<Animator>(); //accessing the door gameObject to get its animation component
         doorTrigger = parent.transform.GetChild(1).GetComponent<DoorTrigger>(); //accessing the last index which is the trigger and getting the doorTrigger script
 
     }
@@ -22,7 +22,7 @@ public class VerticalDoor : MonoBehaviour
     {
         if (doorTrigger.doorStatues == true)
         {
-            door.SetBool("isOpening", true); 
+            door.SetBool("isOpening", true); //activate the opening animation
 
         }
     } 
@@ -30,7 +30,7 @@ public class VerticalDoor : MonoBehaviour
     {
         if (doorTrigger.doorStatues == false)
         {
-            door.SetBool("isOpening", false); 
+            door.SetBool("isOpening", false); //activate the closing animation
         }
     }
 

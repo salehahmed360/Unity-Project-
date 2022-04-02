@@ -5,7 +5,7 @@ using UnityEngine;
 public class TeleportPortal : MonoBehaviour
 {
 
-    private AudioSource inputSound;
+    private AudioSource inputSound;//sound when teleport box is placed on teleport input
     //outputPortal object
     public GameObject outputPortal;
     //detects the box placed on input portal
@@ -17,7 +17,7 @@ public class TeleportPortal : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("teleportBox") && collision != null)
+        if (collision.gameObject.CompareTag("teleportBox") && collision != null) 
         {
             isPlaced = true;
             StartCoroutine(DelayTeleportAction(3f, collision)); //delay time using the delay action which takes in the time to delay 
@@ -29,14 +29,14 @@ public class TeleportPortal : MonoBehaviour
     {
             //get the center of the output portal to move the box into the center 
             var center = outputPortal.GetComponent<Renderer>().bounds.center;
-            box.transform.position = center;
+            box.transform.position = center; //position box into the center of the output teleport 
     }
 
     //delay for certain amount of time and calls the teleportBox function
     public IEnumerator DelayTeleportAction(float time, Collision collision)
     {
         yield return new WaitForSeconds(time);
-        if (collision.gameObject.CompareTag("teleportBox") && collision != null && isPlaced == true)
+        if (collision.gameObject.CompareTag("teleportBox") && collision != null && isPlaced == true) //issue when placing and removing the box on teleport it still telelport even though box is removed where to solve this isPlaced checks if the box is still on input teleport or removed
         {
             inputSound.Play();
             TeleportBox(collision.gameObject);

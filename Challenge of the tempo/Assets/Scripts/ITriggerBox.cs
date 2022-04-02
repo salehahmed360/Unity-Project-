@@ -98,7 +98,7 @@ public class TriggerBox : ITriggerBox
         }
     }
 
-    public void Remove(GameObject box)
+    public void Remove(GameObject box) //remove box from list
     {
         Boxes.Remove(box);
     }

@@ -15,7 +15,7 @@ public class UnityService : IUnityService
     {
         return Time.deltaTime;
     }
-    public float GetAxis(string axisName)
+    public float GetAxis(string axisName) //axis in which the player is moving such as horizontal or vertical
     {
         return Input.GetAxis(axisName);
     }

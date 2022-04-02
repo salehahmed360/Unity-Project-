@@ -14,7 +14,7 @@ public class BridgeTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        color = bridge.GetComponent<Renderer>(); 
+        color = bridge.GetComponent<Renderer>(); //accessing the bridge colour
         origonalColor = color.material.color; //store bridge original colour
 
         bridgeCollider = bridge.GetComponent<Collider>();
@@ -24,7 +24,7 @@ public class BridgeTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer==9 && other !=null) //checks the box is layer 9 which is for boxes
+        if (other.CompareTag("doorBox") || other.CompareTag("teleportBox"))//only doorbox and teleportbox can be used to trigger bridge 
         {
             bridgeCollider.enabled = true; //allows player to wall on bridge
             color.material.SetColor("_Color", Color.green); //sets the colour to green if the box is placed on the trigger
